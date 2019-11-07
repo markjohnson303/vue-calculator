@@ -2,17 +2,20 @@
   <div>
     <p>Calculator</p>
     <Display></Display>
-    <Button></Button>
+    <Number v-for="n in 10" :key="n" :number="10-n"></Number>
+    <Operation operation="="></Operation>
   </div>
 </template>
 
 <script>
-import Button from "@/components/Button.vue";
+import Operation from "@/components/Operation.vue";
+import Number from "@/components/Number.vue";
 import Display from "@/components/Display.vue";
 export default {
   name: "Calculator",
   components: {
-    Button,
+    Number,
+    Operation,
     Display
   }
 };

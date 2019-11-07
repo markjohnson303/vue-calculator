@@ -1,12 +1,12 @@
 <template>
-  <button>1</button>
+  <button>{{number}}</button>
 </template>
 
 <script>
 export default {
-  name: "Button",
+  name: "Number",
   props: {
-    msg: String
+    number: Number
   }
 };
 </script>
