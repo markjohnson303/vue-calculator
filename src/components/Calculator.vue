@@ -9,6 +9,7 @@
     <Operation operation="-" @operation-input="onOperationInput"></Operation>
     <Operation operation="*" @operation-input="onOperationInput"></Operation>
     <Operation operation="/" @operation-input="onOperationInput"></Operation>
+    <Operation operation="C" @operation-input="onOperationInput"></Operation>
   </div>
 </template>
 
@@ -21,23 +22,53 @@ export default {
   name: "Calculator",
   data: function() {
     return {
-      display: "0"
+      display: "0",
+      initialNumber: "",
+      secondaryNumber: "",
+      operation: ""
     };
   },
   methods: {
     onNumberInput: function(number) {
-      if (this.display === "0") {
-        this.display = number.toString();
+      if (!this.operation) {
+        this.initialNumber += number.toString();
+        this.display = this.initialNumber;
       } else {
-        this.display += number;
+        this.secondaryNumber += number.toString();
+        this.display = this.secondaryNumber;
       }
     },
     onOperationInput: function(operation) {
-      if (operation === "=") {
-        this.display = eval(this.display).toString();
-      } else if (this.display != "0") {
-        this.display += operation;
+      if (operation === "C") {
+        this.display = "0";
+        this.initialNumber = "";
+        this.secondaryNumber = "";
+        this.operation = "";
+      } else if (operation === "=") {
+        this.evaluateWithEquals();
+      } else if (this.secondaryNumber) {
+        this.evaluateWithOperation(operation);
+      } else {
+        this.operation = operation;
       }
+    },
+    evaluateWithEquals: function() {
+      let result = eval(
+        this.initialNumber + this.operation + this.secondaryNumber
+      );
+      this.display = result;
+      this.initialNumber = result;
+      this.secondaryNumber = "";
+      this.operation = "";
+    },
+    evaluateWithOperation: function(operation) {
+      let result = eval(
+        this.initialNumber + this.operation + this.secondaryNumber
+      );
+      this.display = result;
+      this.initialNumber = result;
+      this.secondaryNumber = "";
+      this.operation = operation;
     }
   },
   components: {
