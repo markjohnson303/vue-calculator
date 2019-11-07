@@ -14,7 +14,6 @@
 </template>
 
 <script>
-console.log(eval("2+2"));
 import Operation from "@/components/Operation.vue";
 import Number from "@/components/Number.vue";
 import Display from "@/components/Display.vue";
@@ -44,31 +43,24 @@ export default {
         this.initialNumber = "";
         this.secondaryNumber = "";
         this.operation = "";
-      } else if (operation === "=") {
-        this.evaluateWithEquals();
-      } else if (this.secondaryNumber) {
-        this.evaluateWithOperation(operation);
+      } else if (operation === "=" || this.secondaryNumber) {
+        this.evaluate(operation);
       } else {
         this.operation = operation;
       }
     },
-    evaluateWithEquals: function() {
+    evaluate: function(invokingOperation) {
       let result = eval(
         this.initialNumber + this.operation + this.secondaryNumber
       );
       this.display = result;
       this.initialNumber = result;
       this.secondaryNumber = "";
-      this.operation = "";
-    },
-    evaluateWithOperation: function(operation) {
-      let result = eval(
-        this.initialNumber + this.operation + this.secondaryNumber
-      );
-      this.display = result;
-      this.initialNumber = result;
-      this.secondaryNumber = "";
-      this.operation = operation;
+      if (invokingOperation === "=") {
+        this.operation = "";
+      } else {
+        this.operation = operation;
+      }
     }
   },
   components: {
