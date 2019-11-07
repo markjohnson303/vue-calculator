@@ -1,13 +1,11 @@
 <template>
-  <button>{{number}}</button>
+  <button @click="$emit('number-input', number)">{{number}}</button>
 </template>
 
 <script>
 export default {
   name: "Number",
-  props: {
-    number: Number
-  }
+  props: ["number"]
 };
 </script>
 

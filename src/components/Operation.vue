@@ -1,5 +1,5 @@
 <template>
-  <button>{{operation}}</button>
+  <button @click="$emit('operation-input', operation)">{{operation}}</button>
 </template>
 
 <script>

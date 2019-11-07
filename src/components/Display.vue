@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <p>Display</p>
-  </div>
+  <div>{{display}}</div>
 </template>
 
 <script>
 export default {
-  name: "Display"
+  name: "Display",
+  props: ["display"]
 };
 </script>
 
