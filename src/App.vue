@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <p>hello</p>
+    <h1>Vue.js Calculator</h1>
     <Calculator></Calculator>
+    <h2>Mark Johnson</h2>
+    <h3>
+      <a href="http://hellomark.dev">hellomark.dev</a>
+    </h3>
   </div>
 </template>
 

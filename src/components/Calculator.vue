@@ -1,15 +1,23 @@
 <template>
-  <div>
-    <p>Calculator</p>
+  <div class="wrapper">
     <Display :display="display"></Display>
-    <Number v-for="n in 10" :key="n" :number="10-n" @number-input="onNumberInput"></Number>
+    <Operation operation="C" @operation-input="onOperationInput"></Operation>
+    <Number number="7" @number-input="onNumberInput"></Number>
+    <Number number="8" @number-input="onNumberInput"></Number>
+    <Number number="9" @number-input="onNumberInput"></Number>
+    <Operation operation="/" @operation-input="onOperationInput"></Operation>
+    <Number number="4" @number-input="onNumberInput"></Number>
+    <Number number="5" @number-input="onNumberInput"></Number>
+    <Number number="6" @number-input="onNumberInput"></Number>
+    <Operation operation="*" @operation-input="onOperationInput"></Operation>
+    <Number number="1" @number-input="onNumberInput"></Number>
+    <Number number="2" @number-input="onNumberInput"></Number>
+    <Number number="3" @number-input="onNumberInput"></Number>
+    <Operation operation="-" @operation-input="onOperationInput"></Operation>
+    <Number number="0" @number-input="onNumberInput"></Number>
     <Number number="." @number-input="onNumberInput"></Number>
     <Operation operation="=" @operation-input="onOperationInput"></Operation>
     <Operation operation="+" @operation-input="onOperationInput"></Operation>
-    <Operation operation="-" @operation-input="onOperationInput"></Operation>
-    <Operation operation="*" @operation-input="onOperationInput"></Operation>
-    <Operation operation="/" @operation-input="onOperationInput"></Operation>
-    <Operation operation="C" @operation-input="onOperationInput"></Operation>
   </div>
 </template>
 
@@ -73,4 +81,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: [col] 75px [col] 75px [col] 75px [col] 75px;
+  grid-template-rows: [row] auto;
+  background-color: #e89d3a;
+  color: #444;
+  justify-content: center;
+  width: 330px;
+  border: 20px solid #e89d3a;
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  border: none;
+  box-shadow: 5px 5px grey;
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:active {
+  box-shadow: 1px 1px grey;
+}
 </style>

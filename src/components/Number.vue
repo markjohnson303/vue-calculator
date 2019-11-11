@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('number-input', number)">{{number}}</button>
+  <button class="button number" @click="$emit('number-input', number)">{{number}}</button>
 </template>
 
 <script>
@@ -11,4 +11,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.number {
+  background-color: #444;
+}
 </style>
